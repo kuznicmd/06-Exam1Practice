@@ -2,8 +2,8 @@
 PRACTICE Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Michael Kuznicki.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -111,6 +111,21 @@ def problem2a(circle, rectangle, window):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
 
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    line = rg.Line(rectangle.get_upper_right_corner(), rectangle.get_lower_left_corner())
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    window.render()
+
+
+
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
     print()
@@ -182,6 +197,16 @@ def problem2b(rect, n, delta, win):
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
 
+    rect.attach_to(win)
+    corner_1 = rg.Point(rect.corner_1.x - delta, rect.corner_1.y - delta)
+    corner_2 = rg.Point(rect.corner_2.x + delta, rect.corner_2.y + delta)
+    for k in range(n - 1):
+        rects = rg.Rectangle(corner_1, corner_2)
+        corner_1 = rg.Point(rects.corner_1.x - delta, rects.corner_1.y - delta)
+        corner_2 = rg.Point(rects.corner_2.x + delta, rects.corner_2.y + delta)
+        rects.attach_to(win)
+
+    win.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
