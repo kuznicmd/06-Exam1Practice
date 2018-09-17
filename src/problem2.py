@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -117,7 +117,7 @@ def problem2a(circle, rectangle, window):
     window.continue_on_mouse_click()
 
     line = rg.Line(rectangle.get_upper_right_corner(), rectangle.get_lower_left_corner())
-    line.arrow('last')
+    line.arrow = 'last'
     line.attach_to(window)
     window.render()
     window.continue_on_mouse_click()

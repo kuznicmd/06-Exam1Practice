@@ -156,6 +156,24 @@ def problem3a(window, point, n):
     #    TIME ESTIMATE:   20 to 35 minutes.
     # ------------------------------------------------------------------
 
+    line = rg.Line(point, rg.Point(point.x, point.y + 50))
+    line.thickness = 1
+    total = 0
+    for k in range(n):
+        line.attach_to(window)
+        total = total + line.thickness
+        point.x = point.x + 20
+        point.y = point.y + 10
+        line = rg.Line(point, rg.Point(point.x, point.y + 50))
+        if line.thickness < 12:
+            line.thickness = line.thickness + 2
+        else:
+            line.thickness = 13
+        window.render()
+    return total
+
+
+
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
@@ -224,7 +242,7 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # ------------------------------------------------------------------
-    print('hot' + 5)
+
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
